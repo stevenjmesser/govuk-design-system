@@ -24,8 +24,6 @@ Help users to create and enter secure and memorable passwords.
 
 To ask users for 'Passwords' and meet the new Web Content Accessibility Guidelines (WCAG) 2.2 criteria, make sure that users can successfully:
 
-- [interact with any 'show password' button](/patterns/passwords/#wcag-interact-show-password)
-- [copy and paste into a password input](/patterns/passwords/#wcag-copy-paste-password)
 - [find 'reset password' links in a consistent place on each page](/patterns/passwords/#wcag-consistent-reset)
 
 See the full list of [components and patterns affected by WCAG 2.2](/accessibility/wcag-2.2/#components-and-patterns-affected-in-the-design-system).
