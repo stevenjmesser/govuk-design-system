@@ -44,7 +44,7 @@ For technical considerations, you may also want to read the guidance for the [pa
 
 When using passwords in your service, you should:
 
-- help users make them memorable and strong
+- help users make strong, unique passwords
 - let users paste their password
 - keep them secure, particularly when helping users reset a password
 
@@ -56,13 +56,17 @@ Overly strict or confusing constraints can make it harder for people to create m
 - forget their password and have to reset it
 - store their password in a non-secure place
 
-Choose constraints that meet the security needs of your service. If you need additional security, add a second authentication factor rather than extra password constraints.
+Choose restrictions that meet the security needs of your service, and be clear and consistent about them.
+
+Any restrictions must be identical wherever the user creates or enters a password. If you change the restrictions over time, you must continue to support existing user passwords or ask them to set a new one.
+
+If you need additional security, consider adding a second authentication factor rather than extra password restrictions.
 
 Make sure you:
 
 - set a minimum length of at least 8 characters
 - do not set a maximum length
-- explain the constraints to users
+- explain any restrictions to users
 - do not allow commonly used passwords
 
 ### Do not make users keep changing their passwords
@@ -75,7 +79,7 @@ You should not do this because it means users:
 - will tend to pick simple variations on their previous password
 - are more likely to store their password in a non-secure place
 
-You should only force a password change if you suspect an account may be&nbsp;compromised.
+You should usually only force a password change if you suspect an account may be&nbsp;compromised.
 
 ### Handling incorrect login attempts
 

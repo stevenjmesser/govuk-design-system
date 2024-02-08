@@ -11,7 +11,7 @@ layout: layout-pane.njk
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/tag/macro.njk" import govukTag %}
 
-Help users to accessibly create and enter passwords.
+Help users to create and enter passwords.
 
 {% set wcagCallout %}
 
@@ -25,6 +25,7 @@ Help users to accessibly create and enter passwords.
 To use the ‘Password input’ and meet the new Web Content Accessibility Guidelines (WCAG) 2.2 criteria, make sure that users can successfully:
 
 - [interact with any 'show password' button](/components/password-input/#wcag-interact-show-password)
+– [use `autocomplete` to securely create and enter passwords](/components/password-input/#wcag-autocomplete-attribute) 
 - [copy and paste into a password input](/components/password-input/#wcag-copy-paste-password)
 
 See the full list of [components and patterns affected by WCAG 2.2](/accessibility/wcag-2.2/#components-and-patterns-affected-in-the-design-system).
@@ -45,29 +46,33 @@ Before using this pattern, you should also read the guidance on [asking users fo
 
 ## When not to use this component
 
-Do not use this component if the information being asked for isn't a password.
+Do not use this component to ask for any information other than a password.
 
-If you're asking for other security information, such as multi-factor authentication codes, answers to security questions, or other personally-identifiable information, use a [text input](/components/text-input/).
+If you’re asking for other security information, such as multi-factor authentication codes, answers to security questions or other personally identifiable information, use a [text input](/components/text-input/). Also see the [confirm a phone number](/patterns/confirm-a-phone-number/) pattern.
 
 ## How it works
 
-The password input component allows users to enter passwords and, optionally, make the password visible in plain text. This allows users to visually check their input before submitting it, reducing errors and allowing users to use less memorable and more secure passwords.
+This component allows users to enter a password, with an option to show what they’ve entered as plain text. This allows users to visually check their password before they submit it, which helps them reduce errors and choose passwords that are more unique and secure.
 
 ### Error messages
 
 {{ example({ group: "components", item: "password-input", example: "error", html: true, nunjucks: true, open: false, size: "m", loading: "eager" }) }}
 
-- Do not indicate whether the username or password was incorrect, avoid brute forcing data
-- Should clear the password input rather than autofilling with the failed value
-- How errors should work if two password fields need to match and don't
+If a user enters a password incorrectly, do not reveal whether they got the username or password wrong. Clear any information entered into the password input.
 
-### Hide passwords by default
+If you choose to use a second ‘confirm password’ field, do not tell the user when the passwords entered do not match.
 
-Users might be in a public space when entering or creating a password, so you should hide passwords by default.
+Revealing the source of the error can help fraudsters break into people’s accounts.
 
-When there are two or more password inputs on a page, the labels and 'show' and 'hide' toggles for each password input must be different.
+See how to handle incorrect login attempts and help users who forget their password in the [Ask users for passwords](/patterns/passwords/) pattern.
 
-For example, you can label the input "Password" as "show password" and label the second input "Re-enter password" as "show re-entered password".
+### Showing and hiding passwords
+
+Hide passwords by default until the user chooses to show it by interacting with the ‘show’ button. Users might not be in a private space when entering or creating a password, so you should hide passwords by default.
+
+When there are two or more password inputs on a page, the labels and ‘show’ and ‘hide’ toggles for each password input must be different.
+
+For example, you can label the input “Password” as “show password” and label the second input “Re-enter password” as “show re-entered password”.
 
 <div class="app-wcag-22" id="wcag-interact-show-password" role="note">
   {{ govukTag({
@@ -77,25 +82,33 @@ For example, you can label the input "Password" as "show password" and label the
   <p>Make sure any ‘show password’ button is at least 24px by 24px in size, or have adequate spacing. This is to make sure users can easily interact with the button. This relates to WCAG 2.2 success criterion <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html">2.5.8 Target Size (minimum)</a>.</p>
 </div>
 
-### Reset the input's type before submission
+### Define the input’s type as ‘password’
 
-When the form is submitted, the password input should automatically change its `type` to `password`, if it isn't already.
+When the form is submitted, the password input should automatically change its `type` to `password`, if it has not already done so.
 
 This is to prevent browsers from remembering it as a previously provided value and potentially displaying it as an autofill option on non-password inputs.
 
 ### Use the autocomplete attribute
 
-Use the `autocomplete` attribute on password inputs to help users complete forms more quickly. This lets you indicate to browsers and password managers what kind of password is needed so they can autofill the information on a user’s behalf.
+Use the `autocomplete` attribute on password inputs to help users complete forms faster.
+
+`Autocomplete` indicates to browsers and password managers what kind of password is needed so it can be entered for the user.
 
 Set the `autocomplete` attribute to `new-password` if the user is creating a password. Otherwise, use `current-password`.
 
-Providing an `autocomplete` attribute is required to meet [WCAG 2.2](https://www.w3.org/TR/WCAG22/)'s [accessible authentication](https://www.w3.org/TR/WCAG22/#accessible-authentication-minimum) criterion.
+<div class="app-wcag-22" id="wcag-autocomplete-attribute" role="note">
+  {{ govukTag({
+    text: "WCAG 2.2",
+    classes: "app-tag"
+  }) }}
+<p>Providing an `autocomplete` attribute is required to comply with WCAG 2.2 success criterion 3.3.8 <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum">3.3.8 Accessible Authentication (Minimum)</a>.</p>
+</div>
 
-Note that even if `autocomplete` is omitted or set to `off`, many browsers will ignore this and continue to autofill password inputs.
+Many browsers will autofill password inputs, even when the `autocomplete` attribute is missing or set to `off`.
 
 ### Allow users to paste their password
 
-Do not disable paste on password fields. People may have very good reasons why they want to paste their password, for example if they’re using a password manager.
+Do not disable functionality to copy and paste in password fields. People may have very good reasons why they want to do this, for example if they’re using a password manager.
 
 <div class="app-wcag-22" id="wcag-copy-paste-password" role="note">
   {{ govukTag({
@@ -105,20 +118,38 @@ Do not disable paste on password fields. People may have very good reasons why t
   <p>You must allow users to copy and paste or autofill their password. Avoid making the user memorise or transcribe a password from somewhere else in order to use your service. This is to comply with WCAG 2.2 success criterion <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum">3.3.8 Accessible Authentication (Minimum)</a>.</p>
 </div>
 
+Users will not be able to copy any content from the password field when it’s set to ‘hide’ password, such as to save a password in a password manager. However, copying is possible when the field is set to ‘show’.
+
+These are features of browser behaviour and cannot be overridden.
+
 ### Avoid restricting the user's input
 
-Don't use the `maxlength` attribute. The attribute doesn't provide feedback to users that their text input has been truncated, and this is especially true where the text has been pasted from elsewhere or autofilled by a password manager. If a maximum length exists due to technical limitations, return [a visible error message](/patterns/validation/) instead.
+See the [Ask users for Passwords](/patterns/passwords/) pattern to see how to help users choose strong, unique passwords.
 
-- Also do not restrict allowed characters
+Support all the characters users may need to enter a password, including numbers and symbols.
+
+If you must place password restrictions on users, such as for technical or security reasons, be clear and consistent.
+
+Any restrictions must be identical wherever the user creates or enters a password. If you change the restrictions over time, you must continue to support existing user passwords or ask them to set a new one.
+
+#### Do not use `maxlength` to restrict password length
+
+Users will not get any feedback when they’ve reached the `maxlength` and their text input has been truncated. This is particularly true when text has been pasted from elsewhere or autofilled by a password manager.
+
+If you must restrict the length of a password, show an error message instead, using the [validation](/patterns/validation/) pattern.
 
 ### Do not spellcheck or autocapitalise the user's input
 
-Some browsers may automatically change what the user is typing when the input's text is visible, such as correcting spelling or automatically turning on upper case letters at the start of sentences.
+Some browsers might automatically change what the user is typing when the input’s text is visible, such as correcting spelling or automatically turning on upper case letters at the start of sentences.
 
-You can tell browsers not to correct spellings by setting the `spellcheck` attribute to `false`. Doing this can also prevent ['spell-jacking'](https://www.otto-js.com/news/article/chrome-and-edge-enhanced-spellcheck-features-expose-pii-even-your-passwords), where spell checking tools may send text to third-party services, potentially revealing the user's password to those services.
+You can tell browsers not to correct spellings by setting the `spellcheck` attribute to `false`.
+
+Doing this can also prevent ['spell-jacking'](https://www.otto-js.com/news/article/chrome-and-edge-enhanced-spellcheck-features-expose-pii-even-your-passwords), where security researchers have found some spell checking tools gathering personal identifiable information, even user’s passwords, from password input fields to send to third party services.
 
 You can tell browsers not to autocapitalise values by setting the `autocapitalize` attribute to `off`.
 
 ## Research on this component
 
-[TODO]
+Some browsers, password managers and similar tools will add their own show and hide functionality within the password input field. This might confuse users shown alongside this component’s show and hide button.
+
+We investigated how this component interacts with the similar functionality and worked to prevent this duplication where possible.
