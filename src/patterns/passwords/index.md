@@ -40,6 +40,8 @@ See the full list of [components and patterns affected by WCAG 2.2](/accessibili
 
 You should follow this pattern whenever you need users to create or enter a password. Before using this pattern, you should also read the guidance on [user accounts](/patterns/create-accounts/).
 
+For technical considerations, you may also want to read the guidance for the [password input](/components/password-input/) component.
+
 ## How it works
 
 When using passwords in your service, you should:
@@ -84,46 +86,6 @@ If a user enters their account details incorrectly, do not reveal whether they g
 Revealing the source of the error can help fraudsters break into people’s accounts.
 
 Give users between 5 and 10 attempts to enter their password correctly before you lock their account or do any further security checks.
-
-### Hide passwords by default
-
-Users might be in a public space when entering or creating a password, so you should hide passwords by default.
-
-To help users meet your password constraints and prevent mistyped passwords, you can:
-
-- let them see their password if they want to
-- show the last typed character of their password
-- make them enter their password twice and automatically compare them
-
-#### Showing and hiding passwords
-
-It's common for services to provide a '[show password](https://github.com/alphagov/govuk-design-system-backlog/issues/240)' button which helps users to accurately add their password by letting them see what they're typing
-
-When there are two or more password fields on a page, the 'show' and 'hide' labels for each password input must be unique.
-
-For example, you can label the input "Password" as "show password" and label the second input "Re-enter password" as "show re-entered password".
-
-<div class="app-wcag-22" id="wcag-interact-show-password" role="note">
-  {{ govukTag({
-    text: "WCAG 2.2",
-    classes: "app-tag"
-  }) }}
-  <p>Make sure any ‘show password’ button is at least 24px by 24px in size, or have adequate spacing. This is to make sure users can easily interact with the button. This relates to WCAG 2.2 success criterion <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html">2.5.8 Target Size (minimum)</a>.</p>
-</div>
-
-### Allow users to paste or autofill their password
-
-Do not disable paste on password fields. People might have good reasons why they want to paste their password, for example if they’re using a password manager.
-
-Allow password managers to populate password inputs by adding the autocomplete attribute values for `current-password` and `new-password`.
-
-<div class="app-wcag-22" id="wcag-copy-paste-password" role="note">
-  {{ govukTag({
-    text: "WCAG 2.2",
-    classes: "app-tag"
-  }) }}
-  <p>You must allow users to copy and paste or autofill their password. Avoid making the user memorise or transcribe a password from somewhere else in order to use your service. This is to comply with WCAG 2.2 success criterion <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum">3.3.8 Accessible Authentication (Minimum)</a>.</p>
-</div>
 
 ### Help users who forget their password
 
