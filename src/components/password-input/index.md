@@ -25,7 +25,7 @@ Help users to create and enter passwords.
 To use the ‘Password input’ and meet the new Web Content Accessibility Guidelines (WCAG) 2.2 criteria, make sure that users can successfully:
 
 - [interact with any 'show password' button](/components/password-input/#wcag-interact-show-password)
-– [use `autocomplete` to securely create and enter passwords](/components/password-input/#wcag-autocomplete-attribute) 
+- [use `autocomplete` to securely create and enter passwords](/components/password-input/#wcag-autocomplete-attribute)
 - [copy and paste into a password input](/components/password-input/#wcag-copy-paste-password)
 
 See the full list of [components and patterns affected by WCAG 2.2](/accessibility/wcag-2.2/#components-and-patterns-affected-in-the-design-system).
