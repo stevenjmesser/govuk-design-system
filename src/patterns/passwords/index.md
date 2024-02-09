@@ -50,7 +50,7 @@ When using passwords in your service, you should:
 
 ### Helping users choose strong passwords
 
-Overly strict or confusing constraints can make it harder for people to create memorable passwords. This could mean they:
+Overly strict or confusing constraints can make it harder for people to create strong and memorable passwords. This could mean they:
 
 - stop using your service
 - forget their password and have to reset it
@@ -79,7 +79,7 @@ You should not do this because it means users:
 - will tend to pick simple variations on their previous password
 - are more likely to store their password in a non-secure place
 
-You should usually only force a password change if you suspect an account may be&nbsp;compromised.
+Usually, you should only force a password change if you suspect an account might be compromised.
 
 ### Handling incorrect login attempts
 

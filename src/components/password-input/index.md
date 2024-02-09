@@ -40,9 +40,9 @@ See the full list of [components and patterns affected by WCAG 2.2](/accessibili
 
 ## When to use this component
 
-You should use this component whenever you need users to create or enter a password.
+Use this component whenever you need users to create or enter a password.
 
-Before using this pattern, you should also read the guidance on [asking users for passwords](/patterns/passwords/) and [creating user accounts](/patterns/create-accounts/).
+Before using this component, you should also read the guidance on [asking users for passwords](/patterns/passwords/) and [creating user accounts](/patterns/create-accounts/).
 
 ## When not to use this component
 
@@ -58,7 +58,7 @@ This component allows users to enter a password, with an option to show what the
 
 {{ example({ group: "components", item: "password-input", example: "error", html: true, nunjucks: true, open: false, size: "m", loading: "eager" }) }}
 
-If a user enters a password incorrectly, do not reveal whether they got the username or password wrong. Clear any information entered into the password input.
+If a user enters their account details incorrectly, do not reveal whether they got the username or password wrong. Clear any information entered into the password input.
 
 If you choose to use a second ‘confirm password’ field, do not tell the user when the passwords entered do not match.
 
@@ -68,7 +68,7 @@ See how to handle incorrect login attempts and help users who forget their passw
 
 ### Showing and hiding passwords
 
-Hide passwords by default until the user chooses to show it by interacting with the ‘show’ button. Users might not be in a private space when entering or creating a password, so you should hide passwords by default.
+Hide passwords by default until the user chooses to show it using the ‘show’ button. Users might not be in a private space when entering or creating a password, so you should hide passwords by default.
 
 When there are two or more password inputs on a page, the labels and ‘show’ and ‘hide’ toggles for each password input must be different.
 
@@ -79,14 +79,14 @@ For example, you can label the input “Password” as “show password” and l
     text: "WCAG 2.2",
     classes: "app-tag"
   }) }}
-  <p>Make sure any ‘show password’ button is at least 24px by 24px in size, or have adequate spacing. This is to make sure users can easily interact with the button. This relates to WCAG 2.2 success criterion <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html">2.5.8 Target Size (minimum)</a>.</p>
+  <p>Make sure any ‘show password’ button is at least 24px by 24px in size, or has adequate spacing. This is to make sure users can easily interact with the button. This relates to WCAG 2.2 success criterion <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html">2.5.8 Target Size (minimum)</a>.</p>
 </div>
 
 ### Define the input’s type as ‘password’
 
 When the form is submitted, the password input should automatically change its `type` to `password`, if it has not already done so.
 
-This is to prevent browsers from remembering it as a previously provided value and potentially displaying it as an autofill option on non-password inputs.
+This is to prevent browsers from remembering it as a previously-provided value and potentially displaying it as an autofill option on non-password inputs.
 
 ### Use the autocomplete attribute
 
@@ -101,7 +101,7 @@ Set the `autocomplete` attribute to `new-password` if the user is creating a pas
     text: "WCAG 2.2",
     classes: "app-tag"
   }) }}
-<p>Providing an `autocomplete` attribute is required to comply with WCAG 2.2 success criterion 3.3.8 <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum">3.3.8 Accessible Authentication (Minimum)</a>.</p>
+<p>Providing an autocomplete attribute is required to comply with WCAG 2.2 success criterion 3.3.8 <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum">3.3.8 Accessible Authentication (Minimum)</a>.</p>
 </div>
 
 Many browsers will autofill password inputs, even when the `autocomplete` attribute is missing or set to `off`.
@@ -115,7 +115,7 @@ Do not disable functionality to copy and paste in password fields. People may ha
     text: "WCAG 2.2",
     classes: "app-tag"
   }) }}
-  <p>You must allow users to copy and paste or autofill their password. Avoid making the user memorise or transcribe a password from somewhere else in order to use your service. This is to comply with WCAG 2.2 success criterion <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum">3.3.8 Accessible Authentication (Minimum)</a>.</p>
+  <p>You must allow users to paste or autofill their password. Avoid making the user memorise or transcribe a password from somewhere else in order to use your service. This is to comply with WCAG 2.2 success criterion <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum">3.3.8 Accessible Authentication (Minimum)</a>.</p>
 </div>
 
 Users will not be able to copy any content from the password field when it’s set to ‘hide’ password, such as to save a password in a password manager. However, copying is possible when the field is set to ‘show’.
@@ -124,7 +124,7 @@ These are features of browser behaviour and cannot be overridden.
 
 ### Avoid restricting the user's input
 
-See the [Ask users for Passwords](/patterns/passwords/) pattern to see how to help users choose strong, unique passwords.
+See the [Ask users for Passwords](/patterns/passwords/) pattern to see how to help users choose strong passwords.
 
 Support all the characters users may need to enter a password, including numbers and symbols.
 
@@ -132,11 +132,11 @@ If you must place password restrictions on users, such as for technical or secur
 
 Any restrictions must be identical wherever the user creates or enters a password. If you change the restrictions over time, you must continue to support existing user passwords or ask them to set a new one.
 
-#### Do not use `maxlength` to restrict password length
+#### Do not use 'maxlength' to restrict password length
 
 Users will not get any feedback when they’ve reached the `maxlength` and their text input has been truncated. This is particularly true when text has been pasted from elsewhere or autofilled by a password manager.
 
-If you must restrict the length of a password, show an error message instead, using the [validation](/patterns/validation/) pattern.
+If you must restrict the length of a password, show an error message instead using the [validation](/patterns/validation/) pattern.
 
 ### Do not spellcheck or autocapitalise the user's input
 
